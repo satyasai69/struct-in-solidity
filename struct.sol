@@ -14,13 +14,16 @@ contract Todos {
  }
  struct Todo {
    string text;
-   bool complete;
+   bool completed;
  }
- Todo[] public todo;
+ Todo[] public todos;
  function create(string calldata _text) public{
-   todo.push(Todo(_text, false));
+   todos.push(Todo(_text, false));
  }
- function get() public view {}
+ function get(uint _index) public view returns (string memory text, bool completed) {
+   Todo storage todo = todos[_index];
+   return (todo.text, todo.completed);
+ }
  function updateText() public{}
  function toggleCompeleted() public{}
 }
