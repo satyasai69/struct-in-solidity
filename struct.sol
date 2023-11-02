@@ -17,7 +17,9 @@ contract Todos {
    bool complete;
  }
  Todo[] public todo;
- function create() public{}
+ function create(string calldata _text) public{
+   todo.push(Todo(_text, false));
+ }
  function get() public view {}
  function updateText() public{}
  function toggleCompeleted() public{}
